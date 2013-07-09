@@ -21,9 +21,10 @@ class ContextSpec extends FunSpec with MustMatchers {
     }
     
     it("can create an updated copy of itself with a new ref/value pair") {
-      val ctx = Context.empty.updated(stringRef, "foo")
-      
+      val ctx = Context(otherStringRef -> "bar").updated(stringRef, "foo")
+
       ctx(stringRef) must be("foo")
+      ctx(otherStringRef) must be("bar")
     }
     
     it("can create an updated copy of itself with an existing ref/value pair overwritten") {
